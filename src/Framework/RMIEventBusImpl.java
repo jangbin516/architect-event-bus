@@ -5,6 +5,7 @@
 package Framework;
 
 import java.rmi.Naming;
+import java.rmi.registry.LocateRegistry;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -21,8 +22,13 @@ public class RMIEventBusImpl extends UnicastRemoteObject implements RMIEventBus 
 	
 	public static void main(String args[]) {
 		try {
+			try {
+				LocateRegistry.createRegistry(1099);
+			} catch (RemoteException ignored) {
+				// rmiregistry may already be running.
+			}
 			RMIEventBusImpl eventBus = new RMIEventBusImpl();
-	      	Naming.bind("EventBus", eventBus);
+	      	Naming.rebind("EventBus", eventBus);
 	      	System.out.println("Event Bus is running now...");
 		} catch (Exception e) {
 			System.out.println("Event bus startup error: " + e);

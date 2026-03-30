@@ -43,6 +43,10 @@ public class CourseMain {
 					printLogEvent("Get", event);
 					eventBus.sendEvent(new Event(EventId.ClientOutput, registerCourse(coursesList, event.getMessage())));
 					break;
+				case DeleteCourses:
+					printLogEvent("Get", event);
+					eventBus.sendEvent(new Event(EventId.ClientOutput, deleteCourse(coursesList, event.getMessage())));
+					break;
 				case QuitTheSystem:
 					eventBus.unRegister(componentId);
 					done = true;
@@ -69,6 +73,13 @@ public class CourseMain {
 			returnString += coursesList.getCourseList().get(j).getString() + "\n";
 		}
 		return returnString;
+	}
+
+	private static String deleteCourse(CourseComponent coursesList, String courseId) {
+		if (coursesList.deleteCourse(courseId)) {
+			return "The selected course(" + courseId + ") is deleted.";
+		}
+		return "The selected course(" + courseId + ") does not exist.";
 	}
 	
 	private static void printLogEvent(String comment, Event event) {
