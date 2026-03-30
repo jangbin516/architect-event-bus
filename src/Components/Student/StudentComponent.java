@@ -5,6 +5,7 @@
 package Components.Student;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class StudentComponent {
 	protected ArrayList<Student> vStudent;
 	
 	public StudentComponent(String sStudentFileName) throws FileNotFoundException, IOException {
-		BufferedReader bufferedReader = new BufferedReader(new FileReader(sStudentFileName));
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(resolveInputPath(sStudentFileName)));
 		this.vStudent = new ArrayList<Student>();
 		while (bufferedReader.ready()) {
 			String stuInfo = bufferedReader.readLine();
