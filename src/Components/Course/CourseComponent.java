@@ -30,4 +30,23 @@ public class CourseComponent {
         }
         return false;
     }
+    public Course findCourseById(String courseId) {
+        for (int i = 0; i < this.vCourse.size(); i++) {
+            Course course = this.vCourse.get(i);
+            if (course.match(courseId)) return course;
+        }
+        return null;
+    }
+    public boolean deleteCourse(String courseId) {
+        for (int i = 0; i < this.vCourse.size(); i++) {
+            if (this.vCourse.get(i).match(courseId)) {
+                this.vCourse.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    public void addCourse(Course course) {
+        this.vCourse.add(course);
+    }
 }

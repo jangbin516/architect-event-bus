@@ -34,4 +34,20 @@ public class StudentComponent {
 		}
 		return false;
 	}
+	public Student findStudentById(String studentId) {
+		for (int i = 0; i < this.vStudent.size(); i++) {
+			Student student = this.vStudent.get(i);
+			if (student.match(studentId)) return student;
+		}
+		return null;
+	}
+	public boolean deleteStudent(String studentId) {
+		for (int i = 0; i < this.vStudent.size(); i++) {
+			if (this.vStudent.get(i).match(studentId)) {
+				this.vStudent.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
 }
