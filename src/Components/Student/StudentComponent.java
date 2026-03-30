@@ -51,13 +51,4 @@ public class StudentComponent {
 		}
 		return false;
 	}
-	private static String resolveInputPath(String fileName) {
-		File directPath = new File(fileName);
-		if (directPath.exists()) return directPath.getPath();
-
-		File srcPath = new File("src" + File.separator + fileName);
-		if (srcPath.exists()) return srcPath.getPath();
-
-		return fileName;
-	}
 }
