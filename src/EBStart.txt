@@ -1,0 +1,3 @@
+%ECHO OFF
+START "EVENT BUS RMI REGISTRY" /MIN /NORMAL rmiregistry
+START "EVENT BUS" /MIN /NORMAL java Framework.RMIEventBusImpl

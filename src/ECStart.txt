@@ -1,0 +1,11 @@
+%ECHO OFF
+%ECHO Starting ECS System
+PAUSE
+%ECHO ECS Monitoring Output Console
+START "SYSTEM IN" /NORMAL java Components.ClientInput.ClientInputMain
+%ECHO ECS Monitoring Input Console
+START "SYSTEM OUT" /NORMAL java Components.ClientOutput.ClientOutputMain
+%ECHO Starting Student Component Function Console
+START "STUDENT COMPONENT" /NORMAL java Components.Student.StudentMain
+%ECHO Starting Course Component Function Console
+START "COURSE COMPONENT" /NORMAL java Components.Course.CourseMain
